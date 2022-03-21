@@ -1,16 +1,13 @@
 <template>
-  <q-page class="q-pa-lg flex flex-start column">
-    <form-todo @cancel="redirectToListTodos"/>
-  </q-page>
-
+    <h4>Test</h4>
+    <q-btn @click="$emit('test')" color="secondary" label="Test" />
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import FormTodo from '../components/FormTodo'
 
 export default defineComponent({
-  name: 'AddTodo',
+  name: 'test-component',
   computed: {
     todos () {
       return this.$store.state.moduleTodo.todos
@@ -21,6 +18,7 @@ export default defineComponent({
       label: ''
     }
   },
+  emits: ['test'],
   methods: {
     addTodo () {
       if (!this.validateFields()) return
@@ -34,9 +32,6 @@ export default defineComponent({
     redirectToListTodos () {
       this.$router.push('/todos/list')
     }
-  },
-  components: {
-    'form-todo': FormTodo
   }
 })
 </script>

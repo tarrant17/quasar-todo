@@ -2,21 +2,32 @@
   <q-page class="q-pa-lg flex flex-start column">
       <div class="row">
         <h4>Mes Todos</h4>
-        <q-btn @click="redirectToAjouterTodo" color="primary" label="Ajouter" class="center q-ma-xl" />
+        <q-btn @click="toogleShowDialogAddTodo" color="primary" label="Ajouter" class="center q-ma-xl" />
       </div>
       <q-list bordered separator>
-        <todo v-for="todo in todos" :key="todo.id" :todo="todo"/>
+        <todo-item v-for="todo in todos" :key="todo.id" :todo="todo"/>
       </q-list>
+      <q-dialog v-model="showDialogAddTodo">
+        <q-card class="q-pa-xl">
+          <todo-form @cancel="toogleShowDialogAddTodo" />
+        </q-card>
+      </q-dialog>
   </q-page>
 
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import Todo from '../components/Todo'
+import Todo from '../components/ListItemTodo'
+import FormTodo from '../Components/FormTodo'
 
 export default defineComponent({
-  name: 'IndexPage',
+  name: 'ListTodos',
+  data () {
+    return {
+      showDialogAddTodo: false
+    }
+  },
   computed: {
     todos () {
       return this.$store.state.todos.todos
@@ -25,10 +36,15 @@ export default defineComponent({
   methods: {
     redirectToAjouterTodo () {
       this.$router.push('/todos/add')
+    },
+    toogleShowDialogAddTodo () {
+      console.log('toogleShowDialogAddTodo')
+      this.showDialogAddTodo = !this.showDialogAddTodo
     }
   },
   components: {
-    todo: Todo
+    'todo-item': Todo,
+    'todo-form': FormTodo
   }
 })
 </script>
