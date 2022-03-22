@@ -5,7 +5,7 @@
         <q-btn @click="this.showDialogAddTodo = true" color="primary" label="Ajouter" class="center q-ma-xl" />
       </div>
       <q-list v-if="todos.length>0" bordered separator>
-        <todo-item @editTodo="showDialogEditTodo=true" v-for="todo in todos" :key="todo.id" :todo="todo"/>
+        <todo-item v-for="todo in todos" :key="todo.id" :todo="todo"/>
       </q-list>
       <span v-else class="text-red q-ml-xs">
         Aucun Todos
@@ -13,11 +13,6 @@
       <q-dialog v-model="showDialogAddTodo">
         <q-card class="q-pa-xl">
           <todo-form-add @cancel="this.showDialogAddTodo = false" />
-        </q-card>
-      </q-dialog>
-      <q-dialog v-model="showDialogEditTodo">
-        <q-card class="q-pa-xl">
-          <todo-form-edit @cancel="this.showDialogEditTodo = false" />
         </q-card>
       </q-dialog>
   </q-page>
@@ -28,14 +23,12 @@
 import { defineComponent } from 'vue'
 import Todo from '../components/ListItemTodo'
 import FormTodoAdd from '../Components/FormTodo/FormTodoAdd'
-import FormTodoEdit from '../Components/FormTodo/FormTodoEdit'
 
 export default defineComponent({
   name: 'ListTodos',
   data () {
     return {
-      showDialogAddTodo: false,
-      showDialogEditTodo: false
+      showDialogAddTodo: false
     }
   },
   computed: {
@@ -50,8 +43,7 @@ export default defineComponent({
   },
   components: {
     'todo-item': Todo,
-    'todo-form-add': FormTodoAdd,
-    'todo-form-edit': FormTodoEdit
+    'todo-form-add': FormTodoAdd
   }
 })
 </script>

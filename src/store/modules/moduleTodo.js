@@ -26,13 +26,18 @@ export default {
       if (todo == null) return
       context.commit('addTodo', todo)
     },
-    toggleTodoDone (context, payload) {
-      if (payload == null) return
-      context.commit('modifyTodo', payload)
+    toggleTodoDone (context, updates) {
+      if (updates == null) return
+      context.commit('modifyTodo', updates)
     },
     deleteTodo (context, idTodo) {
       if (idTodo == null) return
       context.commit('deleteTodo', idTodo)
+    },
+    editTodo (context, updates) {
+      console.log('action editTodo', updates)
+      if (updates == null) return
+      context.commit('modifyTodo', updates)
     }
   }
 }
