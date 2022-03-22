@@ -7,14 +7,16 @@
       <form-todo-duedate v-model="todo.dueDate"/>
 
       <q-checkbox left-label v-model="todo.done" label="Terminé" />
-      <div class="row justify-center">
-        <q-btn type="submit" color="primary" label="Ajouter" class="q-ma-md" />
-        <q-btn
-          @click="$emit('cancel')"
-          color="secondary"
-          label="Annuler"
-          class="q-ma-md"
-        />
+      <div>
+        <q-btn-group spread unelevated rounded  >
+          <q-btn type="submit" color="primary" label="Ajouter" class="q-ma-md" />
+          <q-btn
+            @click="$emit('cancel')"
+            color="secondary"
+            label="Annuler"
+            class="q-ma-md"
+          />
+        </q-btn-group>
       </div>
     </div>
   </q-form>
