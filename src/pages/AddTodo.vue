@@ -1,13 +1,15 @@
 <template>
-  <q-page class="q-pa-lg flex flex-start column">
-    <form-todo @cancel="redirectToListTodos"/>
+  <q-page class="q-pa-lg flex align-center column">
+    <div style="width:50%">
+      <form-todo @cancel="redirectToListTodos"/>
+    </div>
   </q-page>
 
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import FormTodo from '../components/FormTodo'
+import FormTodo from '../components/FormTodo/FormTodo'
 
 export default defineComponent({
   name: 'AddTodo',

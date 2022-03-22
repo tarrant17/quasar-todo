@@ -4,9 +4,12 @@
         <h4>Mes Todos</h4>
         <q-btn @click="toogleShowDialogAddTodo" color="primary" label="Ajouter" class="center q-ma-xl" />
       </div>
-      <q-list bordered separator>
+      <q-list v-if="todos.length>0" bordered separator>
         <todo-item v-for="todo in todos" :key="todo.id" :todo="todo"/>
       </q-list>
+      <span v-else class="text-red q-ml-xs">
+        Aucun Todos
+      </span>
       <q-dialog v-model="showDialogAddTodo">
         <q-card class="q-pa-xl">
           <todo-form @cancel="toogleShowDialogAddTodo" />
@@ -19,7 +22,7 @@
 <script>
 import { defineComponent } from 'vue'
 import Todo from '../components/ListItemTodo'
-import FormTodo from '../Components/FormTodo'
+import FormTodo from '../Components/FormTodo/FormTodo'
 
 export default defineComponent({
   name: 'ListTodos',
@@ -38,7 +41,6 @@ export default defineComponent({
       this.$router.push('/todos/add')
     },
     toogleShowDialogAddTodo () {
-      console.log('toogleShowDialogAddTodo')
       this.showDialogAddTodo = !this.showDialogAddTodo
     }
   },

@@ -2,7 +2,7 @@ export default {
   state: { todos: [{ id: 1, label: 'fsqd', done: false }] },
   mutations: {
     addTodo (state, todo) {
-      todo.id = state.todos[state.todos.length - 1].id + 1
+      console.log('mutations add todo', todo)
       state.todos.push(todo)
     },
     modifyTodo (state, payload) {
@@ -10,18 +10,26 @@ export default {
       if (index !== undefined) {
         Object.assign(state.todos[index], payload.updates)
       }
+    },
+    deleteTodo (state, payload) {
+      const index = state.todos.findIndex(todo => {
+        return todo.id === payload.id
+      })
+      if (index >= 0) state.todos.splice(index, 1)
     }
   },
   actions: {
     addTodo (context, todo) {
-      if (todo != null) {
-        context.commit('addTodo', todo)
-      }
+      if (todo == null) return
+      context.commit('addTodo', todo)
     },
     toggleTodoDone (context, payload) {
-      console.log('toggleTodoDone', payload)
       if (payload == null) return
       context.commit('modifyTodo', payload)
+    },
+    deleteTodo (context, idTodo) {
+      if (idTodo == null) return
+      context.commit('deleteTodo', idTodo)
     }
   }
 }
