@@ -1,18 +1,17 @@
 <template>
-  <form-todo-header>Ajouter un Todo</form-todo-header>
+  <form-todo-header>Ajouter un todo</form-todo-header>
   <q-form @submit="addTodo" class="q-gutter-md rounded-borders">
     <div class="q-pa-md">
       <form-todo-label v-model="todo.label"/>
       <form-todo-duedate v-model="todo.dueDate"/>
       <q-checkbox left-label v-model="todo.done" label="Terminé" />
-      <form-todo-actions @cancel="$emit('cancel')"/>
+      <form-todo-actions labelBtnValidate="Ajouter" @cancel="$emit('cancel')"/>
     </div>
   </q-form>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import { uid } from 'quasar'
 import FormTodoHeader from './FormTodoHeader'
 import FormTodoLabel from './FormTodoLabel'
 import FormTodoDueDate from './FormTodoDueDate'
@@ -29,7 +28,6 @@ export default defineComponent({
   data () {
     return {
       todo: {
-        id: uid(),
         label: '',
         dueDate: null,
         done: false

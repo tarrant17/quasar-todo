@@ -21,14 +21,17 @@ import { date } from 'quasar'
 export default defineComponent({
   name: 'todo-item',
   props: ['todo'],
+  emits: ['editTodo'],
   methods: {
     ...mapActions({ deleteTodoAction: 'deleteTodo', toggleTodoDoneAction: 'toggleTodoDone' }),
     toggleTaskDone () {
       this.toggleTodoDoneAction({ id: this.todo.id, updates: { done: !this.todo.done } })
     },
+    editTodo () {
+      console.log('editTodo', this.todo.id)
+      this.$emit('editTodo', { id: this.todo.id })
+    },
     deleteTodo () {
-      console.log('deleteTodo', this.todo.id)
-      // this.$store.dispatch('deleteTodo', { id: this.todo.id })
       this.deleteTodoAction({ id: this.todo.id })
     }
   },

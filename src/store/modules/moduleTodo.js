@@ -1,8 +1,11 @@
+import { uid } from 'quasar'
+
 export default {
   state: { todos: [{ id: 1, label: 'fsqd', done: false }] },
   mutations: {
     addTodo (state, todo) {
       console.log('mutations add todo', todo)
+      todo.id = uid()
       state.todos.push(todo)
     },
     modifyTodo (state, payload) {

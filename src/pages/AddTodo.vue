@@ -1,15 +1,14 @@
 <template>
   <q-page class="q-pa-lg flex align-center column">
     <div style="width:50%">
-      <form-todo @cancel="redirectToListTodos"/>
+      <form-todo @cancel="redirectToListTodos" title="Ajouter un todo" labelBtnValidate='Ajouter' />
     </div>
   </q-page>
-
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import FormTodo from '../components/FormTodo/FormTodo'
+import FormTodoAdd from '../components/FormTodo/FormTodoAdd'
 
 export default defineComponent({
   name: 'AddTodo',
@@ -18,27 +17,13 @@ export default defineComponent({
       return this.$store.state.moduleTodo.todos
     }
   },
-  data () {
-    return {
-      label: ''
-    }
-  },
   methods: {
-    addTodo () {
-      if (!this.validateFields()) return
-      const newTodo = { id: Math.random(), label: this.label, done: false }
-      this.$store.dispatch('addTodo', newTodo)
-      this.$router.push('/todos/list')
-    },
-    validateFields () {
-      return this.label != null && this.label !== ''
-    },
     redirectToListTodos () {
       this.$router.push('/todos/list')
     }
   },
   components: {
-    'form-todo': FormTodo
+    'form-todo': FormTodoAdd
   }
 })
 </script>
