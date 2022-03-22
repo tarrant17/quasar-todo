@@ -1,7 +1,7 @@
 <template>
   <q-input
     filled
-    :model-value="date"
+    :model-value="modelValue"
     @update:modelValue="event=>$emit('update:modelValue', event)"
     mask="date"
     :rules="['date']">
@@ -14,8 +14,8 @@
             transition-hide="scale"
           >
             <q-date
-              :model-value="date"
-              @update:modelValue="onChangeSelectCalendar($event)">
+              :model-value="modelValue"
+              @update:modelValue="event=>$emit('update:modelValue', event)">
               <div class="row items-center justify-end">
                 <q-btn v-close-popup label="Close" color="primary" flat />
               </div>
@@ -31,15 +31,10 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   props: ['modelValue'],
   emits: ['update:modelValue'],
-  data () {
-    return {
-      date: this.modelValue
-    }
-  },
   methods: {
     onChangeSelectCalendar (event) {
-      this.date = event
-      this.$emit('update:modelValue', event)
+      // this.date = event
+
     }
   }
 })
