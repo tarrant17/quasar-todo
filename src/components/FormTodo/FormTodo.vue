@@ -2,8 +2,8 @@
   <form-todo-header>Ajouter un Todo</form-todo-header>
   <q-form @submit="addTodo" class="q-gutter-md rounded-borders">
     <div class="q-pa-md">
-      <form-todo-label autofocus v-model="test" />
-      <test-gros v-model="test"/>{{test}}
+
+      <form-todo-label v-model="todo.label"/>
       <form-todo-duedate v-model="todo.dueDate"/>
 
       <q-checkbox left-label v-model="todo.done" label="Terminé" />
@@ -26,22 +26,20 @@ import { uid } from 'quasar'
 import FormTodoHeader from './FormTodoHeader'
 import FormTodoLabel from './FormTodoLabel'
 import FormTodoDueDate from './FormTodoDueDate'
-import Test from '../Test'
 
 export default defineComponent({
   name: 'form-todo',
   components: {
     'form-todo-header': FormTodoHeader,
     'form-todo-label': FormTodoLabel,
-    'form-todo-duedate': FormTodoDueDate,
-    'test-gros': Test
+    'form-todo-duedate': FormTodoDueDate
   },
   data () {
     return {
       test: 'caca',
       todo: {
         id: uid(),
-        label: 'prems',
+        label: '',
         dueDate: null,
         done: false
       }

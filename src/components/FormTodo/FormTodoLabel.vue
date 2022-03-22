@@ -1,15 +1,18 @@
 <template>
     <q-input
-        :modelValue="name"
-        @input="$emit('update:modelValue', $event.target.value)"
+        :model-value="modelValue"
+        @update:modelValue="event=>$emit('update:modelValue', event)"
         label="A faire"
+        :rules="[val => !!val || 'Field is required']"
       />
 </template>
 <script>
 import { defineComponent } from 'vue'
 
 export default defineComponent({
-  props: ['name'],
-  emits: ['update:modelValue']
+  props: ['modelValue'],
+  emits: ['update:modelValue'],
+  methods: {
+  }
 })
 </script>
