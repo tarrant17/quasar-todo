@@ -11,14 +11,14 @@ const routes = [
     path: '/todos/list',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/ListTodos.vue') }
+      { path: '', component: () => import('pages/PageListTodos.vue') }
     ]
   },
   {
     path: '/todos/add',
     component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '', component: () => import('pages/AddTodo.vue') }
+      { path: '', component: () => import('pages/PageAddTodo.vue') }
     ]
   },
 

@@ -22,7 +22,7 @@
 import { defineComponent } from 'vue'
 import { mapActions } from 'vueX'
 import { date } from 'quasar'
-import FormTodoEdit from './FormTodo/FormTodoEdit'
+import FormTodoEdit from '../FormTodo/FormTodoEdit'
 
 export default defineComponent({
   name: 'todo-item',

@@ -1,7 +1,30 @@
 import { uid } from 'quasar'
 
 export default {
-  state: { todos: [{ id: 1, label: 'fsqd', done: false }] },
+  state: {
+    todos: [
+      {
+        id: 1,
+        label: 'Se laver les dents',
+        done: true
+      },
+      {
+        id: 2,
+        label: 'Souscrire assurance',
+        done: false
+      },
+      {
+        id: 3,
+        label: 'Aller au cinéma',
+        done: false
+      },
+      {
+        id: 4,
+        label: 'Appeler copain',
+        done: true
+      }
+    ]
+  },
   mutations: {
     addTodo (state, todo) {
       console.log('mutations add todo', todo)
@@ -35,9 +58,19 @@ export default {
       context.commit('deleteTodo', idTodo)
     },
     editTodo (context, updates) {
-      console.log('action editTodo', updates)
       if (updates == null) return
       context.commit('modifyTodo', updates)
+    }
+  },
+  getters: {
+    allTodos: (state) => {
+      return state.todos
+    },
+    todosNotDone: (state) => {
+      return state.todos.filter(todo => todo.done === false)
+    },
+    todosDone: (state) => {
+      return state.todos.filter(todo => todo.done === true)
     }
   }
 }

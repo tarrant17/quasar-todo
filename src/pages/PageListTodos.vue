@@ -4,12 +4,8 @@
         <h4>Mes Todos</h4>
         <q-btn @click="this.showDialogAddTodo = true" color="primary" label="Ajouter" class="center q-ma-xl" />
       </div>
-      <q-list v-if="todos.length>0" bordered separator>
-        <todo-item v-for="todo in todos" :key="todo.id" :todo="todo"/>
-      </q-list>
-      <span v-else class="text-red q-ml-xs">
-        Aucun Todos
-      </span>
+      <todo-list-done :todosDone="todosDone"/>
+      <todo-list-not-done :todosNotDone="todosNotDone"/>
       <q-dialog v-model="showDialogAddTodo">
         <q-card class="q-pa-xl">
           <todo-form-add @cancel="this.showDialogAddTodo = false" />
@@ -21,8 +17,10 @@
 
 <script>
 import { defineComponent } from 'vue'
-import Todo from '../components/ListItemTodo'
 import FormTodoAdd from '../Components/FormTodo/FormTodoAdd'
+import ListTodosDone from '../Components/ListTodo/ListTodosDone'
+import ListTodosNotDone from '../Components/ListTodo/ListTodosNotDone'
+import { mapGetters } from 'vueX'
 
 export default defineComponent({
   name: 'ListTodos',
@@ -31,19 +29,18 @@ export default defineComponent({
       showDialogAddTodo: false
     }
   },
+  components: {
+    'todo-list-done': ListTodosDone,
+    'todo-list-not-done': ListTodosNotDone,
+    'todo-form-add': FormTodoAdd
+  },
   computed: {
-    todos () {
-      return this.$store.state.todos.todos
-    }
+    ...mapGetters({ todosNotDone: 'todosNotDone', todosDone: 'todosDone' })
   },
   methods: {
     redirectToAjouterTodo () {
       this.$router.push('/todos/add')
     }
-  },
-  components: {
-    'todo-item': Todo,
-    'todo-form-add': FormTodoAdd
   }
 })
 </script>
