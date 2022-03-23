@@ -1,21 +1,24 @@
 <template>
   <q-page class="q-pa-lg flex flex-center column">
-    {{compteur}}
-    <q-input v-model="compteur" />
-    <q-btn @click="incrementCompteur">add</q-btn>
-    <test-component @test="this.compteur=12"/>
+    <div class="compteur">
+      <h4>Compteur</h4>
+      <span><span class="text-bold">Valeur actuelle du compteur : </span>{{compteur}}</span>
+      <q-input label="Input compteur direct" v-model="compteur" color="primary"/>
+      <q-btn @click="incrementCompteur" color="primary" label="Bouton Incrementer" class="q-ma-xl"/>
+      <test-component v-model="compteur"/>
+    </div>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
-import Test from '../components/Test'
+import ChildToParentEmitUpdateValue from '../components/Tests/ChildToParentEmitUpdateValue'
 // import mapState from 'vuex'
 
 export default defineComponent({
   name: 'IndexPage',
   components: {
-    'test-component': Test
+    'test-component': ChildToParentEmitUpdateValue
   },
   computed: {
     compteur: {
@@ -34,3 +37,12 @@ export default defineComponent({
   }
 })
 </script>
+<style lang="scss">
+.compteur {
+    border : 5px $blue-3 solid;
+    padding: 50px;
+    border-radius: 50px;
+    background-color: $blue-2
+
+  }
+</style>
