@@ -3,7 +3,7 @@
     <q-item-section side top >
       <q-checkbox color="green" v-model="taskDone"  />
     </q-item-section>
-    <q-item-section class="text-white">{{todo.label}}</q-item-section>
+    <q-item-section :class="{'text-strike' : todo.done}" class="text-white">{{todo.label}}</q-item-section>
     <q-item-section side right class="text-white">
       <div>
         {{formattedDueDate}}

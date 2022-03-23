@@ -8,7 +8,7 @@
       :bgColor="backgroundColor"/>
   </q-list>
   <div v-else :class="backgroundColor" class="text-white text-center q-py-xl">
-    Aucun Todos terminés
+    Aucun Todos à faire
   </div>
 </template>
 <script>
