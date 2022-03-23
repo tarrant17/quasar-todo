@@ -5,14 +5,14 @@
         <q-btn @click="this.showDialogAddTodo = true" color="primary" label="Ajouter" class="center q-ma-xl" />
       </div>
       <div class="q-ma-md">
-        <todo-list-not-done :todosNotDone="todosNotDone"/>
+        <todo-list-not-done :loading="loading" :todosNotDone="todosNotDone"/>
       </div>
       <div class="q-ma-md">
-        <todo-list-done :todosDone="todosDone"/>
+        <todo-list-done :loading="loading" :todosDone="todosDone"/>
       </div>
       <q-dialog v-model="showDialogAddTodo">
         <q-card class="q-pa-xl">
-          <todo-form-add @cancel="this.showDialogAddTodo = false" />
+          <todo-form-add  @cancel="this.showDialogAddTodo = false" />
         </q-card>
       </q-dialog>
   </q-page>
@@ -33,7 +33,7 @@ export default defineComponent({
     return {
       todosDone: [],
       todosNotDone: [],
-      posts: [],
+      loading: true,
       showDialogAddTodo: false
     }
   },
@@ -45,25 +45,21 @@ export default defineComponent({
   methods: {
     redirectToAjouterTodo () {
       this.$router.push('/todos/add')
-    },
-    async getData () {
-      try {
-        const response = await axios.get(
-          'http://localhost:3000/todos/'
-        )
-        // JSON responses are automatically parsed.
-        console.table(response.data)
-        return response.data
-      } catch (error) {
-        console.log(error)
-      }
     }
   },
   async mounted () {
     console.log('mounted')
-    const todos = await this.getData()
-    this.todosDone = todos.filter(todo => todo.done === true)
-    this.todosNotDone = todos.filter(todo => todo.done === false)
+    try {
+      const response = await axios.get(
+        'http://localhost:3000/todos/'
+      )
+      // JSON responses are automatically parsed.
+      this.todosDone = response.data.filter(todo => todo.done === true)
+      this.todosNotDone = response.data.filter(todo => todo.done === false)
+      this.loading = false
+    } catch (error) {
+      console.log(error)
+    }
   }
 })
 </script>

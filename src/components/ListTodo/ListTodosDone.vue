@@ -1,6 +1,7 @@
 <template>
   <todos-header>Terminés</todos-header>
-  <q-list v-if="todosDone.length > 0" separator>
+  <spinner-api v-if="loading" />
+  <q-list v-else-if="todosDone.length > 0" separator>
     <todo-item
       v-for="todo in todosDone"
       :key="todo.id"
@@ -15,6 +16,7 @@
 import { defineComponent } from 'vue'
 import Todo from './ListItemTodo'
 import ListHeaderTodos from './ListHeaderTodos'
+import SpinnerAPI from '../SpinnerAPI'
 
 export default defineComponent({
   data () {
@@ -22,10 +24,11 @@ export default defineComponent({
       backgroundColor: 'bg-green'
     }
   },
-  props: ['todosDone'],
+  props: ['todosDone', 'loading'],
   components: {
     'todo-item': Todo,
-    'todos-header': ListHeaderTodos
+    'todos-header': ListHeaderTodos,
+    'spinner-api': SpinnerAPI
   },
   methods: {
 
