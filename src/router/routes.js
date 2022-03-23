@@ -15,6 +15,13 @@ const routes = [
     ]
   },
   {
+    path: '/todos/listaxios',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/PageListTodosWithAxios.vue') }
+    ]
+  },
+  {
     path: '/todos/add',
     component: () => import('layouts/MainLayout.vue'),
     children: [
