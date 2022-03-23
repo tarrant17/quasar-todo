@@ -1,5 +1,5 @@
 <template>
-  <q-item :class="todo.done?'bg-green':'bg-orange'" clickable v-ripple @click="toggleTaskDone(todo)">
+  <q-item :class="bgColor" clickable v-ripple @click="toggleTaskDone(todo)">
     <q-item-section side top >
       <q-checkbox color="green" v-model="taskDone"  />
     </q-item-section>
@@ -26,7 +26,7 @@ import FormTodoEdit from '../FormTodo/FormTodoEdit'
 
 export default defineComponent({
   name: 'todo-item',
-  props: ['todo'],
+  props: ['todo', 'bgColor'],
   emits: ['editTodo'],
   data () {
     return {

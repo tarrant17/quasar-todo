@@ -5,10 +5,10 @@
         <q-btn @click="this.showDialogAddTodo = true" color="primary" label="Ajouter" class="center q-ma-xl" />
       </div>
       <div class="q-ma-md">
-        <todo-list-done :todosDone="todosDone"/>
+        <todo-list-not-done :todosNotDone="todosNotDone"/>
       </div>
       <div class="q-ma-md">
-        <todo-list-not-done :todosNotDone="todosNotDone"/>
+        <todo-list-done :todosDone="todosDone"/>
       </div>
       <q-dialog v-model="showDialogAddTodo">
         <q-card class="q-pa-xl">

@@ -1,9 +1,9 @@
 <template>
   <todos-header>Terminés</todos-header>
   <q-list v-if="todosDone.length > 0" separator>
-    <todo-item v-for="todo in todosDone" :key="todo.id" :todo="todo"/>
+    <todo-item v-for="todo in todosDone" :key="todo.id" :todo="todo" :bgColor="backgroundColor"/>
   </q-list>
-  <div v-else class="bg-green text-white text-center q-py-xl">
+  <div v-else :class="backgroundColor" class="text-white text-center q-py-xl">
     Aucun Todos terminés
   </div>
 </template>
@@ -13,7 +13,11 @@ import Todo from './ListItemTodo'
 import ListHeaderTodos from './ListHeaderTodos'
 
 export default defineComponent({
-
+  data () {
+    return {
+      backgroundColor: 'bg-green'
+    }
+  },
   props: ['todosDone'],
   components: {
     'todo-item': Todo,
