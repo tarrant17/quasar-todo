@@ -7,7 +7,7 @@ J'utilise ici options API (et non pas composition API, ce sera fait dans un autr
 
 Screenshots :
 
-<img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/List.PNG?raw=true" height="300">
+<img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/Liste.PNG?raw=true" height="300">
 <img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/AddTodo.PNG?raw=true" height="300">
 <img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/EditTodo.PNG?raw=true" height="300">
 
