@@ -7,9 +7,9 @@ J'utilise ici options API (et non pas composition API, ce sera fait dans un autr
 
 Screenshots :
 
-<img src="https://github.com/tarrant17/quasar-todo/blob/master/assets/screenshots/List.PNG?raw=true" height="600">
-<img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/AddTodo.PNG?raw=true" height="600">
-<img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/EditTodo.PNG?raw=true" height="600">
+<img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/List.PNG?raw=true" height="300">
+<img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/AddTodo.PNG?raw=true" height="300">
+<img src="https://github.com/tarrant17/quasar-todo/blob/master/src/assets/screenshots/EditTodo.PNG?raw=true" height="300">
 
 ## Install the dependencies
 ```bash
