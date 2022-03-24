@@ -29,6 +29,13 @@ const routes = [
     ]
   },
   {
+    path: '/todos/listaxiossuspense',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/PageListTodosWithAxiosAndSuspense.vue') }
+    ]
+  },
+  {
     path: '/todos/add',
     component: () => import('layouts/MainLayout.vue'),
     children: [

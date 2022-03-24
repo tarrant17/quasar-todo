@@ -56,7 +56,7 @@ const linksList = [
     link: '/'
   },
   {
-    title: 'Mes Todos',
+    title: 'Mes Todos VueX',
     icon: 'list',
     link: '/todos/list'
   },
@@ -64,6 +64,11 @@ const linksList = [
     title: 'Mes Todos Axios',
     icon: 'list',
     link: '/todos/listaxios'
+  },
+  {
+    title: 'Mes Todos Axios et Suspense boundaries',
+    icon: 'list',
+    link: '/todos/listaxiossuspense'
   },
   {
     title: 'Nouveau Todo',
