@@ -69,6 +69,11 @@ const linksList = [
     title: 'Nouveau Todo',
     icon: 'add',
     link: '/todos/add'
+  },
+  {
+    title: 'Test',
+    icon: 'test',
+    link: '/test'
   }
 ]
 
