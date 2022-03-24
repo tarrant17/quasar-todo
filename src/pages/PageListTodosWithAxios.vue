@@ -49,8 +49,8 @@ export default defineComponent({
       todosNotDone: [],
       loading: true,
       showDialogAddTodo: false,
-      showTablesModeList: false,
-      showTablesModeTable: true
+      showTablesModeList: true,
+      showTablesModeTable: false
     }
   },
   components: {

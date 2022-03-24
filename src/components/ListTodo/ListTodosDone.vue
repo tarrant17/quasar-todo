@@ -13,28 +13,22 @@
   </div>
 </template>
 <script>
-import { defineComponent } from 'vue'
 import Todo from './ListItemTodo'
 import ListHeaderTodos from './ListHeaderTodos'
 import SpinnerAPI from '../SpinnerAPI'
 
-export default defineComponent({
-  data () {
-    return {
-      backgroundColor: 'bg-green'
-    }
-  },
+export default {
   props: ['todosDone', 'loading'],
   components: {
     'todo-item': Todo,
     'todos-header': ListHeaderTodos,
     'spinner-api': SpinnerAPI
   },
-  methods: {
-
-  },
-  computed: {
-
+  // composition api
+  setup (props) {
+    const backgroundColor = 'bg-green'
+    return { backgroundColor }
   }
-})
+
+}
 </script>
