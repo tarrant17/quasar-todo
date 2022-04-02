@@ -64,6 +64,11 @@ const linksList = [
     title: 'Nouveau Todo',
     icon: 'add',
     link: '/todos/add'
+  },
+  {
+    title: 'Test qtable',
+    icon: 'test',
+    link: '/tests/qtable'
   }
 ]
 
