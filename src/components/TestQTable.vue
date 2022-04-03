@@ -1,6 +1,13 @@
 <template>
   <div class="q-pa-md">
-    <q-table title="Treats" :rows="rows" :columns="columns" row-key="name">
+    <q-table
+      title="Treats"
+      :rows="rows"
+      :columns="columns"
+      row-key="name"
+      hide-pagination
+      class="my-sticky-header-table"
+    >
       <template v-slot:body="props">
         <q-tr :props="props">
           <q-td key="name" :props="props">
@@ -12,13 +19,13 @@
             </q-badge>
             <q-input
               filled
-              v-model="props.row.calories"
+              v-model.number="props.row.calories"
               :dense="dense"
               type="number"
-              :rules="[
-                (val) => !!val || 'Valeur incorrecte ou vide',
-                (val) => val.length <= 4 || 'Maximum 9999'
-              ]"
+              size="4"
+              no-error-icon
+              style="max-width: 80px"
+              :rules="rulesQuantite"
             />
           </q-td>
           <q-td key="fat" :props="props">
@@ -46,14 +53,26 @@
               {{ props.row.calcium }}
             </q-badge>
           </q-td>
-          <q-td key="iron" :props="props">
-            <q-badge color="amber">
-              {{ props.row.iron }}
-            </q-badge>
+          <q-td>
+            <q-btn
+              round
+              color="black"
+              icon="my_location"
+              @click="deleteRow(props.row.name)"
+            />
           </q-td>
         </q-tr>
       </template>
     </q-table>
+    <div class="row justify-right">
+      <q-btn
+        class="q-mt-xl"
+        color="white"
+        @click="validateCart"
+        text-color="black"
+        label="Appliquer modifications"
+      />
+    </div>
   </div>
 </template>
 
@@ -198,14 +217,51 @@ const rows = [
   }
 ]
 
+const rulesQuantite = [
+  (val) => !!val || 'Obligatoire',
+  (val) => Number.isInteger(val) || 'Saisir un entier',
+  (val) => val >= 1 || 'Saisir une valeur positive',
+  (val) => val <= 9999 || 'Maximum 9999'
+]
+
 export default {
   data() {
     return {
+      rulesQuantite: rulesQuantite,
       columns: columns,
       rows: rows
     }
   },
   computed: {},
-  methods: {}
+  methods: {
+    validateCart() {
+      console.log(rows)
+    },
+    deleteRow(rowName) {
+      this.rows = this.rows.filter((item) => item.name !== rowName)
+      console.log(this.rows.length)
+    }
+  }
 }
 </script>
+<style lang="sass">
+.my-sticky-header-table
+  /* height or max-height is important */
+
+  .q-table__top,
+  .q-table__bottom,
+  thead tr:first-child th
+    /* bg color is important for th; just specify one */
+    background-color: #c1f4cd
+    color: white
+  thead tr th
+    position: sticky
+    z-index: 1
+  thead tr:first-child th
+    top: 0
+
+  /* this is when the loading indicator appears */
+  &.q-table--loading thead tr:last-child th
+    /* height of all previous header rows */
+    top: 48px
+</style>
